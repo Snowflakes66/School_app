@@ -46,10 +46,9 @@ class LogoutView(APIView):
 class ContactListView(generics.ListAPIView):
     serializer_class = PublicUserSerializer
     permission_classes = [permissions.IsAuthenticated]
-
+    pagination_class = None
     def get_queryset(self):
-        return User.objects.exclude(id=self.request.user.id).order_by('display_name')
-
+        return User.objects.exclude(id=self.request.user.id).order_by('username')
 
 class AvatarUploadView(APIView):
     permission_classes = [permissions.IsAuthenticated]
