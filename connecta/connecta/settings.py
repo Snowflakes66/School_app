@@ -107,13 +107,24 @@ DATABASES = {
 
 
 
-# ── Channel Layer (Redis) ──────────────────────────────────────────────
+# # ── Channel Layer (Redis) ──────────────────────────────────────────────
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             'hosts': [('127.0.0.1', 6379)],
+#         },
+#     },
+# }
+
+
+
+# ── Channel Layer ──────────────────────────────────────────────────────
+# Use InMemory for local dev (no Redis needed)
+# Switch to Redis (channels_redis) for production
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [('127.0.0.1', 6379)],
-        },
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
     },
 }
 

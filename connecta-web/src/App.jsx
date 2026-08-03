@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import useAuthStore from './store/authStore'
 import Login from './pages/Login'
 import Home from './pages/Home'
+import Chat from './pages/Chat'
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuthStore()
@@ -17,7 +18,7 @@ export default function App() {
           path="/"
           element={
             <ProtectedRoute>
-              <Home />
+              <Chat />
             </ProtectedRoute>
           }
         />
